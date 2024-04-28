@@ -24,9 +24,9 @@ async def lifespan(app:FastAPI):
                 "sasl.password":settings.SASL_PASSWORD
             },logger=logger
         )
-        topics = ["new_orders","rejected_orders","confirmed_orders","delivering_orders"]
-        # admin_client.create_topics(topics)
-        admin_client.delete_topics(topics)
+        topics = ["new_orders"]
+        admin_client.create_topics(topics)
+        # admin_client.delete_topics(topics)
         yield
     except Exception as e:
         logger.exception(f"Exception - {e}")
